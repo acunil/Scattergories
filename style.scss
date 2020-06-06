@@ -1,3 +1,6 @@
+// variables
+$borderWidth: 2px;
+
 // Global
 
 * {
@@ -9,7 +12,9 @@ body {
   background-color: #183181;
   color: white;
   font-family: "Patua One", Helvetica, sans-serif;
-  font-size: 18px;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  user-select: none;
 }
 
 main {
@@ -18,16 +23,137 @@ main {
   height: 100%;
   position: fixed;
   z-index: -10;
+  display: fixed;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fill {
+  height: 100%;
 }
 
 // Content
 
-h1 {
-  letter-spacing: 0.1em;
-  font-size: 3em;
-  display: block;
-  margin: 30px auto;
-  width: 30%;
-  border: 1px solid white;
-  text-align: center;
+// Title Header
+header {
+  h1 {
+    letter-spacing: 0.1em;
+    font-size: 2.5em;
+    display: block;
+    margin: 10px auto;
+    width: 500px;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-align: center;
+  }
+}
+
+// grid area labels
+.timer {
+  grid-area: timer;
+}
+.letter {
+  grid-area: letter;
+}
+.library {
+  grid-area: lib;
+}
+.next-round {
+  grid-area: next-round;
+}
+.play-pause {
+  grid-area: play-pause;
+}
+
+// grid positioning
+.grid-container {
+  border: $borderWidth solid white;
+  margin: 0 20px;
+  height: 85%;
+  display: grid;
+  grid-template:
+    [row1-start] "letter letter lib next-round" [row1-end]
+    [row2-start] "timer play-pause lib next-round" [row2-end]
+    / 2fr 2fr 10fr 1fr;
+
+  section {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: $borderWidth solid white;
+  }
+
+  .small-box {
+    padding: 5px 10px;
+
+    .small-box-header {
+      display: inline-flex;
+      justify-content: space-between;
+      width: 100%;
+      letter-spacing: 0.1em;
+    }
+
+    #time {
+      font-size: 5em;
+      margin-top: -30%;
+    }
+
+    #random-letter {
+      font-size: 10em;
+      margin-top: -15%;
+    }
+  }
+
+  .next-round {
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    p {
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      font-size: 2em;
+    }
+  }
+}
+
+// Library
+
+.library {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.15);
+  font-size: 1.8em;
+  padding: 10px 0;
+
+  li {
+    list-style-position: inside;
+    padding: 5px 0;
+    margin: 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+.play-pause {
+  font-size: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-button {
+  width: 100%;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+}
+
+.button {
+  &:hover {
+    cursor: pointer;
+    color: #ccc;
+  }
 }

@@ -19,30 +19,24 @@ const shuffledLibrary = (() => {
 })();
 
 // Publish Library to DOM
-const libraryToDom = (function () {
+const libraryToDom = function () {
   var libHtml = document.getElementById("library-list");
-  Library.forEach((cat) => {
+  generateScattergories(shuffledLibrary).forEach((cat) => {
     let node = document.createElement("li");
     libHtml.appendChild(node);
     node.innerHTML = cat;
   });
-})();
+};
+libraryToDom();
 
-// Tests
+// Publish randomLetter to DOM
+const letterToDom = function () {
+  var letterHtml = document.getElementById("random-letter");
+  letterHtml.innerHTML = randomLetter().toUpperCase();
+};
+letterToDom();
 
-console.log(randomLetter("abcdefghijklmnopqrstuvw"), ": randomLetter()"); // x, y, or z
-console.log(Library, " from library.js"); // array of categories
-console.log(shuffledLibrary, ": shuffledLibrary");
-console.log(
-  generateScattergories(shuffledLibrary, 5),
-  ": generateScattegories()"
-);
-console.log(
-  generateScattergories(shuffledLibrary, 5),
-  ": generateScattegories()"
-);
-console.log(
-  generateScattergories(shuffledLibrary, 5),
-  ": generateScattegories()"
-);
-console.log(shuffledLibrary, ": shuffledLibrary");
+// Reroll letter
+document.getElementById("reroll").onclick = () => {
+  letterToDom();
+};

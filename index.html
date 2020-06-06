@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scattergories - by Lucian and Ned</title>
+    <title>Scattergories - by Lucian</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap"
       rel="stylesheet"
@@ -12,14 +12,60 @@
   </head>
   <body>
     <main>
+      <!-- Header -->
       <header>
         <h1>SCATTERGORIES</h1>
       </header>
-      <section class="library">
-        <div>
-          <ul id="library-list"></ul>
-        </div>
-      </section>
+
+      <!-- Main grid container -->
+      <div class="grid-container">
+        <!-- Letter -->
+        <section class="letter">
+          <div class="small-box fill">
+            <div class="small-box-header flex">
+              <p class="small-heading">Letter</p>
+              <div class="button" id="reroll">Reroll</div>
+            </div>
+            <div class="flex fill">
+              <h2 id="random-letter"></h2>
+            </div>
+          </div>
+        </section>
+        <!-- Timer -->
+        <section class="timer">
+          <div class="small-box fill">
+            <div class="small-box-header">
+              <p class="small-heading">Time</p>
+              <div class="button">Change</div>
+            </div>
+            <div class="flex fill">
+              <h2 id="time">120</h2>
+            </div>
+          </div>
+        </section>
+        <!-- Library -->
+        <section class="library">
+          <div>
+            <ol id="library-list"></ol>
+          </div>
+        </section>
+        <!-- Play/Pause button -->
+        <section class="play-pause">
+          <div class="div-button fill flex">
+            <p>
+              Play
+            </p>
+          </div>
+        </section>
+        <!-- Next round -->
+        <section class="next-round">
+          <div class="flex fill div-button">
+            <p>
+              Next Round
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
 
     <script type="module" src="./scripts/library.js"></script>
