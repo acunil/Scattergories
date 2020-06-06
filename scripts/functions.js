@@ -1,5 +1,10 @@
 "use strict";
 
+// Library Import
+import { Library } from "./library.js";
+
+// Helper Functions
+
 // // RANDOM LETTER
 // // Returns random letter
 // // Takes optional param of letters to exclude in the form of a string i.e. randomLetter("qzx") would return any letter except q, z, or x
@@ -25,7 +30,13 @@ function randomLetter(optionalLettersToAvoid) {
   return alphabet[randomIndex];
 }
 
-//
+// // RANDOM SCATTERGORIES
+// // Returns 12 randomly selected categories from Library with optional parameter of length (default 12)
+
+function generateScattergories(library, optionalLength) {
+  var length = optionalLength || 12;
+  return library.splice(0, length);
+}
 
 // EXPORTS
-export { randomLetter };
+export { randomLetter, generateScattergories };
