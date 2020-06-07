@@ -18,16 +18,16 @@ const shuffledLibrary = (() => {
   return tempLibrary;
 })();
 
-// Publish Library to DOM
-const libraryToDom = function () {
-  var libHtml = document.getElementById("library-list");
+// Publish Scattergories to DOM
+const scattersToDom = function () {
+  let libList = document.getElementById("library-list");
   generateScattergories(shuffledLibrary).forEach((cat) => {
     let node = document.createElement("li");
-    libHtml.appendChild(node);
+    libList.appendChild(node);
     node.innerHTML = cat;
   });
 };
-libraryToDom();
+scattersToDom();
 
 // Publish randomLetter to DOM
 const letterToDom = function () {
@@ -39,4 +39,29 @@ letterToDom();
 // Reroll letter
 document.getElementById("reroll").onclick = () => {
   letterToDom();
+};
+
+// Publish Library to Dom
+Library.forEach((cat) => {
+  let node = document.createElement("li");
+  document.getElementById("library-list-popup").appendChild(node);
+  node.innerHTML = cat;
+});
+const libToggle = document.getElementById("toggle-library");
+libToggle.onclick = () => {
+  // Button toggle
+  if (libToggle.innerText === "View Library") {
+    // Library view
+    libToggle.innerText = "View Scattergories";
+    // document.getElementById("library").appendChild(library);
+    // Object.assign(library.style, styles);
+    document.getElementById("library-list").style.display = "none";
+
+    document.getElementById("library-list-popup").style.display = "block";
+  } else {
+    // Scattergory view
+    libToggle.innerText = "View Library";
+    document.getElementById("library-list").style.display = "block";
+    document.getElementById("library-list-popup").style.display = "none";
+  }
 };
